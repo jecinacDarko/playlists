@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+  box-sizing:border-box;
+}
+
+.song-card {
+  border-radius: 15px;
+  padding: 10px;
+  margin: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  background-color: rgb(73, 73, 73);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.song-card:hover{
+  background-color:rgb(119, 118, 118);
+}
+
+.song-card.clicked {
+  background-color: #868686;
+  font-weight: bold;
+  color: black;
+}
