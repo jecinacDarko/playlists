@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
     "lib": ["dom", "dom.iterable", "esnext"],
-    "types": ["node", "@vercel/postgresql"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
