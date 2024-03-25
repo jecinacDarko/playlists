@@ -1,20 +1,20 @@
-import { Client } from '@vercel/postgresql';
+// import { Client } from '@vercel/postgresql';
 
-let db: Client | null = null;
+// let db: Client | null = null;
 
-const connectDb = async (): Promise<Client> => {
-  if (!db) {
-    db = new Client({
-      connectionString: process.env.DATABASE_URL,
-      ssl: {
-        rejectUnauthorized: false,
-      },
-    });
+// const connectDb = async (): Promise<Client> => {
+//   if (!db) {
+//     db = new Client({
+//       connectionString: process.env.DATABASE_URL,
+//       ssl: {
+//         rejectUnauthorized: false,
+//       },
+//     });
 
-    await db
-    .connect();
-}
-return db;
-};
+//     await db
+//     .connect();
+// }
+// return db;
+// };
 
-export default connectDb;
+// export default connectDb;

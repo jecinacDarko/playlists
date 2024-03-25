@@ -57,3 +57,11 @@ export interface ClickedSong {
     album: string;
     isClicked: boolean;
 }
+
+export interface SearchRequestBody {
+  query: string;
+}
+
+export interface SearchBarProps {
+  onSearch: (results: any) => void;
+}

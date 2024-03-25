@@ -1,28 +1,33 @@
 'use client';
 
 import { FC, useState } from 'react';
-import { searchSpotify } from '../services/fetch-spotify-data';
-
-interface SearchBarProps {
-  onSearch: (results: any) => void;
-}
+import { SearchBarProps } from '../models/types'
 
 const SearchBar: FC<SearchBarProps> = ({ onSearch }) => {
   const [query, setQuery] = useState('');
 
   const handleSearch = async () => {
     try {
-      const results = await searchSpotify(query);
-      onSearch(results);
-    } catch (error: unknown) {
-      if (error instanceof Error) {
-        console.error(error.message);
-      } else {
-        console.error('Unknown error occurred');
+      console.log('Query:', query); // Log the query parameter
+      const response = await fetch('/api/spotify', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ query }), 
+      });
+      
+      if (!response.ok) {
+        throw new Error('Failed to fetch data');
       }
+  
+      const results = await response.json();
+      onSearch(results);
+    } catch (error) {
+      console.error('Error searching Spotify:', error);
     }
   };
-
+  
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       handleSearch();
