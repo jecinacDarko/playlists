@@ -12,7 +12,7 @@ const SearchBar: FC<SearchBarProps> = ({ onSearch }) => {
       return;
   }
     try {
-      const response = await fetch('api/spotify', {
+      const response = await fetch('/api/spotify', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
