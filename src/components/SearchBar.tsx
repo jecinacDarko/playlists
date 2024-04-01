@@ -7,9 +7,12 @@ const SearchBar: FC<SearchBarProps> = ({ onSearch }) => {
   const [query, setQuery] = useState('');
 
   const handleSearch = async () => {
+    if (!query) {
+      console.error('Query is undefined or empty');
+      return;
+  }
     try {
-      console.log('Query:', query); // Log the query parameter
-      const response = await fetch('/api/spotify', {
+      const response = await fetch('api/spotify', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -20,7 +23,7 @@ const SearchBar: FC<SearchBarProps> = ({ onSearch }) => {
       if (!response.ok) {
         throw new Error('Failed to fetch data');
       }
-  
+      
       const results = await response.json();
       onSearch(results);
     } catch (error) {
